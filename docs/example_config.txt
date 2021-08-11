@@ -1,0 +1,16 @@
+# example config file
+output_master=false
+output_master_dir=~
+output_perdir=false
+output_perdir_dir=.fr
+output_pre=
+output_app=.fr
+repair_pre=
+repair_app=.rep
+files_default=exclude
+files_incl=*.txt,*.png
+files_excl=
+dirs_default=include
+dirs_incl=*
+dirs_excl=.fr
+verbose=0
