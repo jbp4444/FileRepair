@@ -9,6 +9,10 @@ can repair the file by re-calculating the damaged disk from the parity blocks.
 The number of "virtual disks", the per-disk block size, and the total number of parity disks
 may all be varied.
 
+**Update/Oct 2021: I realized that I borked the python packaging config as I moved it all to
+github!  I'll put the setup.py inside the 'packaging' directory for now until I have time
+to fix it ... sorry!**
+
 ## Usage
 
 * fileraid
