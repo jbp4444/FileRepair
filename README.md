@@ -54,31 +54,23 @@ virtual parity disk that we have to store.
 
 ## Utilities/Additional Scripts:
 ```
-adderror.py
+adderror.py -n 1 -b 2 foo.txt
 ```
-Adds bit- or byte-sized errors to an existing file; used for testing
+Used for testing, this adds bit- or mulit-bit(e.g. byte)-sized errors to an existing file. 
+You can vary the number of error-segments (``-n``) and the "burst size" or number of error 
+bits for each segment (``-b``).
 
 ```
-showbits.py
+showbits.py -c 20 foo.txt
 ```
-Similar to hexdump, prints out the bits or bytes in a given file
+Similar to hexdump, this prints out the bits in a given file, ``-c`` characters per line.
+You can also get decimal (``-D``) or hex (``-H``) output.
 
 ```
-makemockup.py
-```
-A start at recording the "important" bits that changed inside a damaged file.  Right now, it just dumps all changed bits, one at a time.
-
-```
-maketest.py
-```
-Uses adderror.py and the output from makemockup.py to create a file that is similar (in damage
-structure) to another file.  I.e. it lays down a set of random bits, then twiddles the ones
-that got twiddled in a previous damage-event.
-
-```
-basicrepair.py
+basicrepair.py -n 4 -c SHA1 -C sha1_checksum_string foo.txt
 ```
 Attempts a brute-force reconstruction of a damaged file from it's original checksum.
 This just walks through all possible single-byte errors that may have happened to the
-file, and checksums each one to see if it matches.
+file, and checksums each one to see if it matches.  Uses Python's ``multiprocessing``
+module to run multiple search tasks simultaneously (faster time to result).
 
